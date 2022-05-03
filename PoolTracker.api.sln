@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32413.511
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolTracker.api", "PoolTracker.api\PoolTracker.api.csproj", "{ABF1BE8B-1ECC-43C2-B695-169C0441F5A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoolTracker.Repository", "PoolTracker.Repository\PoolTracker.Repository.csproj", "{9461F44E-DE6A-4E15-980B-5773DD348BB9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABF1BE8B-1ECC-43C2-B695-169C0441F5A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABF1BE8B-1ECC-43C2-B695-169C0441F5A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABF1BE8B-1ECC-43C2-B695-169C0441F5A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABF1BE8B-1ECC-43C2-B695-169C0441F5A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9461F44E-DE6A-4E15-980B-5773DD348BB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9461F44E-DE6A-4E15-980B-5773DD348BB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9461F44E-DE6A-4E15-980B-5773DD348BB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9461F44E-DE6A-4E15-980B-5773DD348BB9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E06A76C4-143C-4DA0-8D92-99C883D57A8A}
+	EndGlobalSection
+EndGlobal
