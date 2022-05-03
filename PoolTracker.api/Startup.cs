@@ -7,6 +7,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PoolTracker.api.Context;
 using PoolTracker.Repository.Matches;
+using PoolTracker.Repository.Players;
 using PoolTracker.Repository.Repository;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,7 @@ namespace PoolTracker.api
         {
             services.AddSingleton<DapperContext>();
             services.AddScoped<IMatchesRepository, MatchesRepository>();
+            services.AddScoped<IPlayersRepository, PlayersRespository>();
             services.AddControllers();
         }
 
@@ -41,6 +43,14 @@ namespace PoolTracker.api
             }
 
             app.UseRouting();
+
+            app.UseCors(policy =>
+            {
+                policy.AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowAnyOrigin()
+                .WithExposedHeaders("Filename");
+            });
 
             app.UseAuthorization();
 

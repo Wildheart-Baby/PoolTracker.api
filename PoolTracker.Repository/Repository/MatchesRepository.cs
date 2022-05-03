@@ -4,6 +4,7 @@ using PoolTracker.Repository.Entities;
 using PoolTracker.Repository.Matches;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -26,8 +27,24 @@ namespace PoolTracker.Repository.Repository
             
             using (var connection = _context.CreateConnection())
             {
-                var companies = await connection.QueryAsync<PlayedMatch>(query);
-                return companies.ToList();
+                var matches = await connection.QueryAsync<PlayedMatch>(query);
+                return matches.ToList();
+            }
+        }
+
+        public async Task CreateMatch(Match match)
+        {
+            var query = "Insert into matches (player1_id, player2_id, winner_id, balls_left, matchEnding) Values (@player1_id, @player2_id, @winner_id, @balls_left, @matchEnding)";
+            var parameters = new DynamicParameters();
+            parameters.Add("player1_id", match.player1_id, DbType.Int32);
+            parameters.Add("player2_id", match.player2_id, DbType.Int32);
+            parameters.Add("winner_id", match.winner_id, DbType.Int32);
+            parameters.Add("balls_left", match.balls_left, DbType.Int32);
+            parameters.Add("matchEnding", match.matchEnding, DbType.Int32);
+
+            using (var connection = _context.CreateConnection())
+            {
+                await connection.ExecuteAsync(query, parameters);
             }
         }
     }
