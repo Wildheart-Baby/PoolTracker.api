@@ -9,6 +9,6 @@ namespace PoolTracker.Repository.Matches
     public interface IMatchesRepository
     {
         public Task<IEnumerable<PlayedMatch>> GetMatches();
-        public Task CreateMatch(Match match);
+        public Task<Match> CreateMatch(Match match);
     }
 }
