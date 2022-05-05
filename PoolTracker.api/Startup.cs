@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using PoolTracker.api.Context;
+using PoolTracker.Repository.LeaderBoard;
 using PoolTracker.Repository.Matches;
 using PoolTracker.Repository.Players;
 using PoolTracker.Repository.Repository;
@@ -31,6 +32,7 @@ namespace PoolTracker.api
             services.AddSingleton<DapperContext>();
             services.AddScoped<IMatchesRepository, MatchesRepository>();
             services.AddScoped<IPlayersRepository, PlayersRespository>();
+            services.AddScoped<ILeaderBoardRepository, LeaderBoardRepository>();
             services.AddControllers();
         }
 
