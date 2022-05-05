@@ -4,11 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PoolTracker.Repository.Players
+namespace PoolTracker.Repository.LeaderBoard
 {
-    public interface IPlayersRepository
+    public interface ILeaderBoardRepository
     {
-        public Task<IEnumerable<Player>> GetPlayers();
-        
+        public Task<IEnumerable<Player>> GetLeaderBoard();
     }
 }
