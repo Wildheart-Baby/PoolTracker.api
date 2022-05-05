@@ -9,6 +9,6 @@ namespace PoolTracker.Repository.Players
     public interface IPlayersRepository
     {
         public Task<IEnumerable<Player>> GetPlayers();
-        
+        public Task<Player> CreatePlayer(Player player);
     }
 }

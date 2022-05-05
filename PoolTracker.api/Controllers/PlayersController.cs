@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PoolTracker.Repository.Entities;
 using PoolTracker.Repository.Players;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,20 @@ namespace PoolTracker.api.Controllers
             {
                 var players = await _playersRepo.GetPlayers();
                 return Ok(players);
+            }
+            catch (Exception ex)
+            {
+                //log error
+                return StatusCode(500, ex.Message);
+            }
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreatePlayer([FromBody] Player player)
+        {
+            try
+            {
+                var createdPlayer = await _playersRepo.CreatePlayer(player);
+                return CreatedAtRoute("PlayerById", new { id = createdPlayer.id }, createdPlayer);
             }
             catch (Exception ex)
             {
