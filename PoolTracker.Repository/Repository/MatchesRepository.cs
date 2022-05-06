@@ -23,7 +23,8 @@ namespace PoolTracker.Repository.Repository
         {
             var query = "select p1.name as player1, p2.name as player2, w.name as winner,m.match_id as id, m.balls_left as balls_left, m.match_ending as matchEnding from Matches as m inner join players as p1 on p1.id = m.player1_id " +
                         " inner join players as p2 on p2.id = m.player2_id" +
-                        " inner join players as w on w.id = m.winner_id";
+                        " inner join players as w on w.id = m.winner_id" +
+                        "  order by m.match_id desc";
             
             using (var connection = _context.CreateConnection())
             {

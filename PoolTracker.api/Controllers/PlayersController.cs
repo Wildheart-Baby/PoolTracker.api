@@ -45,5 +45,20 @@ namespace PoolTracker.api.Controllers
                 return StatusCode(500, ex.Message);
             }
         }
+        
+        [HttpPut]
+        public async Task<IActionResult> ArchivePlayer([FromBody] Player player)
+        {
+            try
+            {
+                await _playersRepo.ArchivePlayer(player);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                //log error
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }

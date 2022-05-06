@@ -21,7 +21,7 @@ namespace PoolTracker.Repository.Repository
 
         public async Task<IEnumerable<Player>> GetPlayers()
         {
-            var query = "select * from Players";
+            var query = "select * from Players where archived = 0";
 
             using (var connection = _context.CreateConnection())
             {
@@ -32,7 +32,7 @@ namespace PoolTracker.Repository.Repository
 
         public async Task<Player> CreatePlayer(Player player)
         {
-            var query = "Insert into players (name, photo) Values (@name, @photo);SELECT CAST(SCOPE_IDENTITY() as int)";
+            var query = "Insert into players (name, photo, archived) Values (@name, @photo, @archived);SELECT CAST(SCOPE_IDENTITY() as int)";
             var parameters = new DynamicParameters();
             parameters.Add("name", player.name, DbType.String);
             parameters.Add("photo", player.photo, DbType.String);
@@ -57,6 +57,27 @@ namespace PoolTracker.Repository.Repository
                 return createdPlayer;
             }
         }
+
+        public async Task ArchivePlayer(Player player)
+        {
+            var query = "Update players Set archived = 1 where id = @id";
+
+            var parameters = new DynamicParameters();
+            parameters.Add("id", player.id, DbType.Int32);            
+
+            using (var connection = _context.CreateConnection())
+            {
+                try
+                {
+                    Console.WriteLine(query);
+                    await connection.ExecuteAsync(query, parameters);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 
+            }
+        }        
     }
 }
