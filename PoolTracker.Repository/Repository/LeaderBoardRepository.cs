@@ -46,7 +46,7 @@ namespace PoolTracker.Repository.Repository
             "INNER JOIN Players as p on((p.id = m.player1_id) OR(p.id = m.player2_id)) " +
             "GROUP BY p.id " +
             ") " +
-            "SELECT p.*, isnull(w.wins, 0) as wins,  isnull(l.losses, 0) as losses, isnull(b.balls, 0) as balls, (coalesce(w.wins, 0) * 3 - coalesce(l.losses, 0) + coalesce(b.balls, 0)) as points, ROW_NUMBER() OVER(ORDER BY(coalesce(w.wins, 0) * 3 - coalesce(l.losses, 0) + coalesce(b.balls, 0)) desc, wins desc, mp.played desc) as position " +
+            "SELECT p.*, isnull(w.wins, 0) as wins,  isnull(l.losses, 0) as losses, isnull(b.balls, 0) as balls, (coalesce(w.wins, 0) * 3 + coalesce(l.losses, 0) + coalesce(b.balls, 0)) as points, ROW_NUMBER() OVER(ORDER BY(coalesce(w.wins, 0) * 3 + coalesce(l.losses, 0) + coalesce(b.balls, 0)) desc, wins desc, mp.played desc) as position " +
             "FROM players as p " +
             "left JOIN cte_player_wins as w on w.player_id = p.id " +
             "left JOIN cte_player_losses as l on l.player_id = p.id " +
