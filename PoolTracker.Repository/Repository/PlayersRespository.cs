@@ -58,12 +58,12 @@ namespace PoolTracker.Repository.Repository
             }
         }
 
-        public async Task ArchivePlayer(Player player)
+        public async Task ArchivePlayer(int player)
         {
             var query = "Update players Set archived = 1 where id = @id";
 
             var parameters = new DynamicParameters();
-            parameters.Add("id", player.id, DbType.Int32);            
+            parameters.Add("id", player, DbType.Int32);            
 
             using (var connection = _context.CreateConnection())
             {

@@ -47,11 +47,12 @@ namespace PoolTracker.api.Controllers
         }
         
         [HttpPut]
-        public async Task<IActionResult> ArchivePlayer([FromBody] Player player)
+        [Route("archive")]
+        public async Task<IActionResult> ArchivePlayer([FromBody] int id)
         {
             try
             {
-                await _playersRepo.ArchivePlayer(player);
+                await _playersRepo.ArchivePlayer(id);
                 return NoContent();
             }
             catch (Exception ex)

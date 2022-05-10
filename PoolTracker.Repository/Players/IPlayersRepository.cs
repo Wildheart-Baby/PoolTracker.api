@@ -10,6 +10,6 @@ namespace PoolTracker.Repository.Players
     {
         public Task<IEnumerable<Player>> GetPlayers();
         public Task<Player> CreatePlayer(Player player);
-        public Task ArchivePlayer(Player player);
+        public Task ArchivePlayer(int player);
     }
 }
